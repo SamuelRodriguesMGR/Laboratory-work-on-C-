@@ -37,8 +37,38 @@ public class EnterNums
 
         return false;
     }
-    public static void AnalyzeTouristCountries(HashSet<String> countries, Dictionary<string, HashSet<String>> touristVisits)
+    public static void AnalyzeTouristCountries(HashSet<String> countries, List<HashSet<string>> touristVisits)
     {
+        HashSet<String> countriesSome = new HashSet<string>();
+
+        foreach (HashSet<String> tour in touristVisits)
+        {
+            countriesSome.UnionWith(tour);
+        }
+
+        // (посещенные всеми)
+        HashSet<string> visitedAll = touristVisits[0];
+        for (int i = 1; i < touristVisits.Count; i++)
+        {
+            visitedAll.IntersectWith(touristVisits[i]);
+        }
+        Console.WriteLine(String.Join(" ", visitedAll) + " -- Все туристы");
+
+        //  (все посещенные) - (посещенные всеми)
+        HashSet<string> visitedBySome = new HashSet<string>(countriesSome);
+        visitedBySome.ExceptWith(visitedAll);
+        Console.WriteLine(String.Join(" ", visitedBySome) + " -- Некоторые из туристов");
+
+        // (все страны) - (посещенные кем-либо)
+        HashSet<string> visitedByNoOne = new HashSet<string>(countries);
+        visitedByNoOne.ExceptWith(countriesSome);
+        Console.WriteLine(String.Join(" ", visitedByNoOne) + " -- Никто не посетил");
+
+    }
+
+    public static void AnalyzeTouristCountries1(HashSet<String> countries, Dictionary<string, HashSet<String>> touristVisits)
+    {
+        
         foreach (String country in countries)
         {
             int count = 0;
@@ -62,67 +92,48 @@ public class EnterNums
             
         }
     }
-
     public static void FindDeafConsonants(String filePath)
     {
-
-        static int GetIndex(char element, HashSet<char> Collection)
-        {
-            int index = 0;
-
-            foreach (char el in Collection)
-            {
-                if (el == element)
-                {
-                    return index;
-                }
-                index += 1;
-            }
-            return 0;
-        }
-
         // Читаем и разделяем
         string text = File.ReadAllText(filePath).ToLower();
         char[] separators = { ' ', ',', '.', '!', '?', ';', ':', '(', ')', '\n' };
         string[] words = text.Split(separators);
-        
-        //
+
         HashSet<char> deafConsonants = new HashSet<char> { 'п', 'ф', 'к', 'т', 'ш', 'с', 'х', 'ц', 'ч', 'щ' };
-        List<int> CountConsonants = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        HashSet<char> words1 = new HashSet<char> { };
+        HashSet<char> words2 = new HashSet<char> { };
 
         foreach (string word in words)
         {
             HashSet<char> CountWord = new HashSet<char>();
-            
+
             foreach (char c in word)
+            {
+                CountWord.Add(c);
+            }
+            
+            foreach (char c in CountWord)
             {
                 if (deafConsonants.Contains(c)) // есть еть глухая согласная
                 {
-                    CountWord.Add(c);
+                    if (!words2.Contains(c))
+                    {
+                        if (words1.Contains(c))
+                        {
+                            words2.Add(c);
+                            words1.Remove(c);
+                        }
+                        else
+                        {
+                            words1.Add(c);
+                        }
+                        
+                    }
                 }
             }
-            // Console.WriteLine(word + " * " + String.Join(" ", CountWord));
-
-            foreach (char c in CountWord)
-            {
-                CountConsonants[GetIndex(c, deafConsonants)] ++;
-            }
-        }   
-        
-        List<char> result = new List<char>();
-
-        for (int i = 0; i < deafConsonants.Count; i++)
-        {
-
-            if (CountConsonants[i] != 1)
-            {
-                result.Add(deafConsonants.ElementAt(i));
-            }
         }
+        Console.WriteLine(String.Join(" ", words1));
 
-        result.Sort();
-        Console.WriteLine(String.Join(", ", result));
-               
     }
 
     public static void ProcessApplicants(string filePath)
