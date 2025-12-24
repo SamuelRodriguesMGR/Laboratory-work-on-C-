@@ -1,16 +1,19 @@
 using System;
 
+
 namespace CatExample
 {
+    
+    
     /// <summary>
     /// Класс, описывающий кота.
     /// </summary>
-    public class Cat
+    public class Cat : Meowable
     {
         /// <summary>
         /// Имя кота.
         /// </summary>
-        public string Name { get; }
+        private string Name { get; }
 
         /// <summary>
         /// Создаёт экземпляр кота с заданным именем.
@@ -26,6 +29,14 @@ namespace CatExample
         }
 
         /// <summary>
+        /// Реализация интерфейса
+        /// </summary>
+        public void Meow()
+        {
+            Voice();
+        }
+
+        /// <summary>
         /// Кот мяукает один раз.
         /// </summary>
         public void Voice()
@@ -36,7 +47,9 @@ namespace CatExample
         /// <summary>
         /// Кот мяукает заданное количество раз.
         /// </summary>
+        /// 
         /// <param name="count">Количество мяуканий</param>
+        /// 
         public void Voice(int count)
         {
             if (count <= 0)
@@ -51,6 +64,7 @@ namespace CatExample
         /// <summary>
         /// Возвращает строковое представление кота.
         /// </summary>
+        /// 
         /// <returns>Строка вида "кот: Имя"</returns>
         public override string ToString()
         {
@@ -65,7 +79,7 @@ namespace CatExample
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Имя кота не может быть пустым.");
+                throw new ArgumentException("Имя кота вот вообще не может быть пустым.");
             }
         }
 
