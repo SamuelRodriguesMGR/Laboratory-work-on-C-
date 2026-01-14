@@ -3,7 +3,7 @@ using System;
 
 namespace CatExample
 {
-    
+
     
     /// <summary>
     /// Класс, описывающий кота.

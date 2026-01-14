@@ -2,13 +2,7 @@
 
 namespace CatExample
 {
-    /// <summary>
-    /// Итерфейс, содержащий сигнатурy Meow.
-    /// </summary>
-    public interface Meowable
-    {
-        void Meow();
-    }
+    
 
     public static class MeowAll
     {
@@ -26,16 +20,6 @@ namespace CatExample
         }
     }
 
-    /// <summary>
-    /// Произвольный класс, в которого передали написанный метод
-    /// </summary>
-    public class LazyCat : Meowable
-    {
-        public void Meow()
-        {
-            Console.WriteLine("Ленивый Кот: Мяяяу!");
-        }
-    }
 
 
     /// <summary>
