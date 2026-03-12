@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/marat/Development/IKMCSharp/WebApplicationWithBaseData/WebApplicationWithBaseData.csproj": {}
+  },
+  "projects": {
+    "/home/marat/Development/IKMCSharp/WebApplicationWithBaseData/WebApplicationWithBaseData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/marat/Development/IKMCSharp/WebApplicationWithBaseData/WebApplicationWithBaseData.csproj",
+        "projectName": "WebApplicationWithBaseData",
+        "projectPath": "/home/marat/Development/IKMCSharp/WebApplicationWithBaseData/WebApplicationWithBaseData.csproj",
+        "packagesPath": "/home/marat/.nuget/packages/",
+        "outputPath": "/home/marat/Development/IKMCSharp/WebApplicationWithBaseData/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/marat/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.123/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

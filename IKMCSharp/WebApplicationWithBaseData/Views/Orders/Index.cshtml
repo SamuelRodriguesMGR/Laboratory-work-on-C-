@@ -1,0 +1,27 @@
+@model IEnumerable<WebApplicationWithBaseData.Models.Order>
+
+<h2>Orders</h2>
+
+<p><a href="/Orders/Create">Create New Order</a></p>
+
+<table class="table">
+    <tr>
+        <th>OrderID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Order Date</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.OrderID</td>
+        <td>@item.Product?.Name</td>
+        <td>@item.Quantity</td>
+        <td>@item.OrderDate.ToShortDateString()</td>
+        <td>
+            <a href="/Orders/Edit/@item.OrderID">Edit</a> |
+            <a href="/Orders/Delete/@item.OrderID">Delete</a>
+        </td>
+    </tr>
+}
+</table>

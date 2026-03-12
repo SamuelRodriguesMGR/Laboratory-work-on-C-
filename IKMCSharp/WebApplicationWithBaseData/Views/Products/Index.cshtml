@@ -1,0 +1,29 @@
+@model IEnumerable<WebApplicationWithBaseData.Models.Product>
+
+<h2>Products</h2>
+
+<p><a href="/Products/Create">Create New Product</a></p>
+
+<p><a href="/Categories/Index">Create New Categories</a></p>
+
+<p><a href="/Orders/Index">Create New Order</a></p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Price</td>
+        <td>@item.Category?.Name</td>
+        <td>
+            <a href="/Products/Edit/@item.ProductID">Edit</a> |
+            <a href="/Products/Delete/@item.ProductID">Delete</a>
+        </td>
+    </tr>
+}
+</table>

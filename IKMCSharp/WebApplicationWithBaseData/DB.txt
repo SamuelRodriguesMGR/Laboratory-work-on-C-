@@ -1,0 +1,22 @@
+-- -- Таблица категорий
+-- CREATE TABLE Categories (
+--     CategoryID SERIAL PRIMARY KEY,
+--     Name VARCHAR(50) NOT NULL
+-- );
+
+-- -- Таблица товаров
+-- CREATE TABLE Products (
+--     ProductID SERIAL PRIMARY KEY,
+--     Name VARCHAR(50) NOT NULL,
+--     Price NUMERIC(10,2) NOT NULL,
+--     CategoryID INT REFERENCES Categories(CategoryID) ON DELETE SET NULL
+-- );
+
+-- -- Таблица заказов
+-- CREATE TABLE Orders (
+--     OrderID SERIAL PRIMARY KEY,
+--     ProductID INT REFERENCES Products(ProductID) ON DELETE CASCADE,
+--     Quantity INT NOT NULL CHECK (Quantity > 0),
+--     OrderDate DATE NOT NULL
+-- );
+-- SELECT * FROM Orders;

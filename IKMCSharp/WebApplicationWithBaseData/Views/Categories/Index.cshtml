@@ -1,0 +1,23 @@
+@model IEnumerable<WebApplicationWithBaseData.Models.Category>
+
+<h2>Categories</h2>
+
+<p><a href="/Categories/Create">Create New Category</a></p>
+
+<table class="table">
+    <tr>
+        <th>CategoryID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.CategoryID</td>
+        <td>@item.Name</td>
+        <td>
+            <a href="/Categories/Edit/@item.CategoryID">Edit</a> |
+            <a href="/Categories/Delete/@item.CategoryID">Delete</a>
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,27 @@
+@model WebApplicationWithBaseData.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProductID" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryID">Category</label>
+        <select asp-for="CategoryID" class="form-control" 
+                asp-items="@(new SelectList(ViewBag.Categories, "CategoryID", "Name"))">
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
